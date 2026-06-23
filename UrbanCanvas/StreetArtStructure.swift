@@ -16,18 +16,13 @@ struct StreetArtStructure: Identifiable, Hashable {
     let date: String
     let location: String
     let imageName: String
+    
 }
 
 let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de tous les Street Arts (données en dur)
     
-    StreetArtStructure(
-        title: "La Joconde de Marseille",
-        artiste: "KAN DMV",
-        condition: "Bonne",
-        date: "Mars 2022",
-        location: "Palais de la Bourse, 13001 Marseille",
-        imageName: "LaJocondeDeMarseille"
-    ),// Pour les 7 oeuvres suivantes les données (condition et date) non spécifiées dans le cahier des charges et donc fictives pour le bien du projet
+    // Pour les 7 oeuvres suivantes (sauf "a Joconde de Marseille" les données (condition et date) non spécifiées dans le cahier des charges et donc fictives pour le bien du projet
+
     StreetArtStructure(
         title: "Liberté Égalité Fraternité",
         artiste: "Shepard Fairey",
@@ -35,6 +30,14 @@ let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de to
         date: "Juin 2019",
         location: "Paris",
         imageName: "LiberteEgalite_fraternite"
+    ),
+    StreetArtStructure(
+        title: "La Joconde de Marseille",
+        artiste: "KAN DMV",
+        condition: "Bonne",
+        date: "Mars 2022",
+        location: "Palais de la Bourse, 13001 Marseille",
+        imageName: "LaJocondeDeMarseille"
     ),
     StreetArtStructure(
         title: "La maison de Cécile",
