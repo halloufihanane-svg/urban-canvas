@@ -59,7 +59,7 @@ let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de to
         location: "Paris",
         imageName: "LaMaisonDeCecille",
         description: "Dans le cadre du festival « Résonances Urbaines » organisé dans le 11e arrondissement de Paris, coproduit par l'Institut du Monde de la Rue et le Pavillon de l'Arsenal, le collectif local a donné « carte blanche » à l'artiste Kitsune Jolene pour la réalisation de l'œuvre « La maison de Cécile ». Produite et coordonnée par l'atelier StreetArtParis, elle s'inscrit comme une référence poétique majeure dans ce quartier historique.",
-        type: "Pochoir",
+        type: "Calligraphie",
         imageMap: "Placeholder"
     ),
     StreetArtStructure(
@@ -71,7 +71,7 @@ let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de to
         location: "Marseille",
         imageName: "Chloe",
         description: "Dans le cadre du projet « Visages du Sud » exposé sur les façades marseillaises, coproduit par la Criée et le Musée des Civilisations, le collectif d'art contemporain a offert « carte blanche » à l'artiste JDL pour la création de l'œuvre magistrale intitulée « Chloé ». Produite et coordonnée par l'association SudArt, elle s'impose comme le premier portrait monumental en noir et blanc célébrant la jeunesse au cœur de la cité phocéenne.",
-        type: "Portrait",
+        type: "Stencil",
         imageMap: "Placeholder"
     ),
     StreetArtStructure(
@@ -88,14 +88,14 @@ let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de to
     ),
     StreetArtStructure(
         title: "Chuuuut...",
-        artiste: "Jef Aérosol",
+        artiste: "Aero",
         condition: "Bonne",
         date: "Mai 2012",
         city: "Paris",
         location: "Paris",
         imageName: "Chuuuut",
         description: "Dans le cadre de la rétrospective « Les Silences de la Ville » installée sur la place Igor-Stravinsky à Paris, coproduite par le Centre Pompidou et la Galerie du Jour, les curateurs ont laissé « carte blanche » à l'artiste Jef Aérosol pour la conception de l'œuvre « Chuuuut... ». Produite et coordonnée par l'atelier SprayArt, elle reste le pochoir monumental le plus photographié de la scène parisienne.",
-        type: "Pochoir",
+        type: "Stencil",
         imageMap: "Placeholder"
     ),
     StreetArtStructure(
