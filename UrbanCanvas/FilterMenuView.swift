@@ -25,7 +25,34 @@ struct FilterMenuView: View {
         .padding(.horizontal, 8)
         .padding(.top, 8)
         .padding(.bottom, 24)
+        
+        VStack(spacing: 12) {
+            ForEach(categories, id: \.self) { category in
+                Button {
+                    selectedFilter = category
+                    isPresented = false
+                } label: {
+                    Text(category)
+                        .font(.body)
+                        .fontWeight(selectedFilter == category ? .bold : .medium)
+                        .foregroundStyle(selectedFilter == category ? .orange : .black)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                        .background(.white.opacity(0.65))
+                        .cornerRadius(22)
+                    
+                }
+            }
+            
+        }
+        .padding(14) // padding tout autour de la carte du menu déroulant
+        .frame(width: 358)
+        // Effet ultra transparent
+        .background(.ultraThinMaterial)
+        .cornerRadius(24)
+        .shadow(radius: 10)
     }
+        
 }
 
 #Preview {
