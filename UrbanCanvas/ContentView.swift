@@ -26,10 +26,11 @@ struct ContentView: View {
         }
     }
     var body: some View {
-        ZStack {
-            Color("BackgroundGray")
-                .ignoresSafeArea()
-            NavigationStack {
+        NavigationStack {
+            ZStack {
+                Color("BackgroundGray")
+                    .ignoresSafeArea()
+                
                 VStack(alignment: .leading) {
                     Text("Liste des Street arts")
                         .font(.largeTitle)
@@ -66,19 +67,12 @@ struct ContentView: View {
                                     }
                                 }
                             }
-                            
-                            //menu filtre
-                            //.sheet(isPresented: $showFilterSheet) {
-                            //FilterMenuView(selectedFilter: $filterStreetArt, isPresented: $showFilterSheet)
-                            //.presentationDetents([.medium, .fraction(0.5)]) //pour limiter la taille de la feuille et éviter qu'elle prenne toute la place
-                            //}
-                            
                         }
                     }
-                    .listStyle(.insetGrouped)
+                    .listStyle(.plain)
                     .scrollContentBackground(.hidden)
-                    //.background(Color("BackgroundGray"))
-                    .background(Color.clear)
+                    //.background(Color.backgroundGray)
+                    .padding(.horizontal, 20)
                     
                     .toolbar{
                         ToolbarItem(placement: .topBarTrailing) {
@@ -100,22 +94,20 @@ struct ContentView: View {
                                 // Ferme le menu si on clique en dehors de la carte
                                         showFilterSheet = false
                                     }
-                                    
-                                // Ta carte personnalisée (Screen 5) bien centrée
-                                FilterMenuView(selectedFilter: $filterStreetArt, isPresented: $showFilterSheet)
-                                    .transition(.scale.combined(with: .opacity)) // Animation zoom + fondu
+
+                        FilterMenuView(selectedFilter: $filterStreetArt, isPresented: $showFilterSheet)
+                            .padding(24)
+                            .background(.white)
+                            .cornerRadius(30)
+                            .shadow(radius: 10)
+                            .padding(.horizontal, 40)
+                            .transition(.scale.combined(with: .opacity)) // Animation zoom + fondu
                                 }
                             }
                             // Applique l'animation fluide dès que la var showFilterSheet change
                             .animation(.easeInOut, value: showFilterSheet)
                         }
                     }
-            
-        
-    
-
-
-//}
 #Preview {
     ContentView()
 }
