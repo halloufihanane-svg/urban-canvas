@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
     @State private var filterStreetArt = "Tous"
     @State private var showFilterSheet = false
+    @State private var displayMode = "Liste"
     
     
     var filteredStreetArts: [StreetArtStructure] {
@@ -37,43 +39,55 @@ struct ContentView: View {
                         .bold()
                         .padding(.top)
                         .padding(.horizontal, 20) // Marge appliqué sur Figma dans le dev Mode
+                    HStack {
+                        Button("Liste") {
+                            displayMode = "Liste"
+                        }
+                        Button("Carte") {
+                            displayMode = "Carte"
+                        }
+                    }
+                    .padding(.horizontal, 20)
                     
-                    List(filteredStreetArts, id: \.self) { streetArt  in // id: \.self car notre structure est Hashable. De plus on remplace streetArtsData de la V1 par filteredStreetArts pour notre filtre dans la V2
-                        
-                        NavigationLink(destination: StreetArtDetailView(streetArt: streetArt)) {
+                    if displayMode == "Liste" {
+                        List(filteredStreetArts, id: \.self) { streetArt  in // id: \.self car notre structure est Hashable. De plus on remplace streetArtsData de la V1 par filteredStreetArts pour notre filtre dans la V2
                             
-                            HStack (spacing: 11) { // marge de 11 sur Figma entre l'image Circle et le text (le titre de la StreetArt)
-                                Image(streetArt.imageName)
-                                    .resizable()
-                                    .frame(width: 60, height: 60)
-                                    .scaledToFill()
-                                    .frame(width: 60, height: 60)
-                                    .clipped()
-                                    .cornerRadius(60)
+                            NavigationLink(destination: StreetArtDetailView(streetArt: streetArt)) {
                                 
-                                VStack (alignment: .leading, spacing: 8) { // forcer l'alignement à droite et espace de 8 sur Figma
-                                    Text(streetArt.title)
-                                        .font(.headline)
+                                HStack (spacing: 11) { // marge de 11 sur Figma entre l'image Circle et le text (le titre de la StreetArt)
+                                    Image(streetArt.imageName)
+                                        .resizable()
+                                        .frame(width: 60, height: 60)
+                                        .scaledToFill()
+                                        .frame(width: 60, height: 60)
+                                        .clipped()
+                                        .cornerRadius(60)
                                     
-                                    
-                                    HStack (spacing: 4) {
-                                        Image(systemName: "mappin.circle.fill")
-                                            .resizable()
-                                            .frame(width: 12, height: 12)
-                                            .foregroundStyle(.gray)
-                                        Text(streetArt.city)
+                                    VStack (alignment: .leading, spacing: 8) { // forcer l'alignement à droite et espace de 8 sur Figma
+                                        Text(streetArt.title)
                                             .font(.headline)
-                                            .foregroundStyle(.gray)
+                                        
+                                        
+                                        HStack (spacing: 4) {
+                                            Image(systemName: "mappin.circle.fill")
+                                                .resizable()
+                                                .frame(width: 12, height: 12)
+                                                .foregroundStyle(.gray)
+                                            Text(streetArt.city)
+                                                .font(.headline)
+                                                .foregroundStyle(.gray)
+                                        }
                                     }
                                 }
                             }
                         }
+                        .listStyle(.plain)
+                        .scrollContentBackground(.hidden)
+                        //.background(Color.backgroundGray)
+                        .padding(.horizontal, 20)
+                    } else {
+                        Map()
                     }
-                    .listStyle(.plain)
-                    .scrollContentBackground(.hidden)
-                    //.background(Color.backgroundGray)
-                    .padding(.horizontal, 20)
-                    
                     
                 } //fin VStack
                 if showFilterSheet {
