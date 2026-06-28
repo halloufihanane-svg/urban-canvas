@@ -20,6 +20,8 @@ struct StreetArtStructure: Identifiable, Hashable {
     let description: String
     let type: String
     let imageMap: String
+    let latitude: Double
+    let longitude: Double
 }
 
 let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de tous les Street Arts (données en dur)
@@ -36,7 +38,9 @@ let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de to
         imageName: "LiberteEgalite_fraternite",
         description: "Dans le cadre de l'exposition « Marianne au cœur des murs » présentée à Paris, coproduite par le Centre des Arts Urbains et la Galerie de l'Est, le collectif d'artistes parisiens a reçu « carte blanche » de l'artiste Shepard Fairey pour revisiter l'œuvre « Liberté Égalité Fraternité ». Produite et coordonnée par l'association ArtMural, elle est la première représentation moderne de cette fresque républicaine au sein de la capitale.",
         type: "Fresque",
-        imageMap: "Placeholder"
+        imageMap: "Placeholder",
+        latitude: 48.8722,
+        longitude: 2.3833
     ),
     StreetArtStructure(
         title: "La Joconde de Marseille",
@@ -48,7 +52,9 @@ let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de to
         imageName: "ImageJoconde",
         description: "Dans le cadre de l’exposition « La Joconde, exposition immersive » au Palais de la Bourse à Marseille, coproduite par le Grand Palais Immersif et le Musée du Louvre, le MauMA : Musée des arts urbains de Marseille a donné « carte blanche » à l’artiste Kan / DMV pour la réalisation de l’œuvre « La Joconde de Marseille ». Produite et coordonnée par Méta 2, elle est la première représentation urbaine de la célèbre Monna Lisa au sein de la cité phocéenne.",
         type: "Harlftone",
-        imageMap: "Map"
+        imageMap: "Map",
+        latitude: 43.2965,
+        longitude: 5.3756
     ),
     StreetArtStructure(
         title: "La maison de Cécile",
@@ -60,7 +66,9 @@ let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de to
         imageName: "LaMaisonDeCecille",
         description: "Dans le cadre du festival « Résonances Urbaines » organisé dans le 11e arrondissement de Paris, coproduit par l'Institut du Monde de la Rue et le Pavillon de l'Arsenal, le collectif local a donné « carte blanche » à l'artiste Kitsune Jolene pour la réalisation de l'œuvre « La maison de Cécile ». Produite et coordonnée par l'atelier StreetArtParis, elle s'inscrit comme une référence poétique majeure dans ce quartier historique.",
         type: "Calligraphie",
-        imageMap: "Placeholder"
+        imageMap: "Placeholder",
+        latitude: 48.8580,
+        longitude: 2.3705
     ),
     StreetArtStructure(
         title: "Chloé",
@@ -72,7 +80,9 @@ let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de to
         imageName: "Chloe",
         description: "Dans le cadre du projet « Visages du Sud » exposé sur les façades marseillaises, coproduit par la Criée et le Musée des Civilisations, le collectif d'art contemporain a offert « carte blanche » à l'artiste JDL pour la création de l'œuvre magistrale intitulée « Chloé ». Produite et coordonnée par l'association SudArt, elle s'impose comme le premier portrait monumental en noir et blanc célébrant la jeunesse au cœur de la cité phocéenne.",
         type: "Stencil",
-        imageMap: "Placeholder"
+        imageMap: "Placeholder",
+        latitude: 43.2902,
+        longitude: 5.3845
     ),
     StreetArtStructure(
         title: "PA_278",
@@ -84,7 +94,9 @@ let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de to
         imageName: "PA_278",
         description: "Dans le cadre du parcours « Mosaïques Secrètes » déployé à travers les ruelles de Paris, coproduit par le fonds d'art contemporain et la Mairie de Paris, le réseau d'art de rue a donné « carte blanche » à l'artiste Invader pour la pose du carreau « PA_278 ». Produite et coordonnée par le collectif PixelArt, cette installation discrète est devenue un repère incontournable pour les chasseurs d'art de la capitale.",
         type: "Mosaïque",
-        imageMap: "Placeholder"
+        imageMap: "Placeholder",
+        latitude: 48.8606,
+        longitude: 2.3622
     ),
     StreetArtStructure(
         title: "Chuuuut...",
@@ -96,7 +108,9 @@ let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de to
         imageName: "Chuuuut",
         description: "Dans le cadre de la rétrospective « Les Silences de la Ville » installée sur la place Igor-Stravinsky à Paris, coproduite par le Centre Pompidou et la Galerie du Jour, les curateurs ont laissé « carte blanche » à l'artiste Jef Aérosol pour la conception de l'œuvre « Chuuuut... ». Produite et coordonnée par l'atelier SprayArt, elle reste le pochoir monumental le plus photographié de la scène parisienne.",
         type: "Stencil",
-        imageMap: "Placeholder"
+        imageMap: "Placeholder",
+        latitude: 48.8607,
+        longitude: 2.3522
     ),
     StreetArtStructure(
         title: "Le Tigre et la Cigale",
@@ -108,6 +122,8 @@ let streetArtsData: [StreetArtStructure] = [ // Tableau contenant la liste de to
         imageName: "LeTigreEtLaCigale",
         description: "Dans le cadre de la biennale « Faune Urbaine » sur les hauteurs du cours Julien à Marseille, coproduite par le collectif d'art du Panier et les Beaux-Arts, les organisateurs ont accordé « carte blanche » à l'artiste Seth Globepainter pour la fresque « Le Tigre et la Cigale ». Produite et coordonnée par l'association Couleurs du Sud, elle illumine le quartier par ses nuances colorées et son regard enfantin.",
         type: "Fresque",
-        imageMap: "Placeholder"
+        imageMap: "Placeholder",
+        latitude: 43.2913,
+        longitude: 5.3825
     )
 ]
