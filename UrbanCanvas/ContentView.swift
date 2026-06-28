@@ -95,8 +95,9 @@ struct ContentView: View {
                                     .tag(streetArt)
                             }
                         }
-                        if let selected = selectedStreetArt {
-                            Text("Tu as cliqué : \(selected.title)")
+                        .sheet(item: $selectedStreetArt) { streetArt in
+                            StreetArtDetailView(streetArt: streetArt)
+                                .presentationDetents([.height(320), .large])
                         }
                     }
                     
