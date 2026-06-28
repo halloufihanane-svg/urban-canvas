@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var filterStreetArt = "Tous"
     @State private var showFilterSheet = false
     @State private var displayMode = "Liste"
+    @State private var cameraPosition: MapCameraPosition = .region(MKCoordinateRegion(center: (CLLocationCoordinate2D(latitude: 46.6, longitude: 2.5)), span: MKCoordinateSpan(latitudeDelta: 8, longitudeDelta: 8))) //center : coordonnées géographiques du centre de la France
+    @State private var selectedStreetArt: StreetArtStructure?
     
     
     var filteredStreetArts: [StreetArtStructure] {
@@ -86,7 +88,16 @@ struct ContentView: View {
                         //.background(Color.backgroundGray)
                         .padding(.horizontal, 20)
                     } else {
-                        Map()
+                        Map(position: $cameraPosition, selection: $selectedStreetArt) {
+                            ForEach(filteredStreetArts, id: \.self) { streetArt in
+                                Marker(streetArt.title, coordinate: CLLocationCoordinate2D(latitude: streetArt.latitude, longitude: streetArt.longitude))
+                                    .tint(.mainOrange)
+                                    .tag(streetArt)
+                            }
+                        }
+                        if let selected = selectedStreetArt {
+                            Text("Tu as cliqué : \(selected.title)")
+                        }
                     }
                     
                 } //fin VStack
