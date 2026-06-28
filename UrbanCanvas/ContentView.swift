@@ -74,40 +74,41 @@ struct ContentView: View {
                     //.background(Color.backgroundGray)
                     .padding(.horizontal, 20)
                     
-                    .toolbar{
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Button {
-                                showFilterSheet.toggle() // alterne entre true et false
-                            } label: {
-                                Image(systemName: "line.3.horizontal.decrease.circle")
-                            }
-                        }
-                    }
-                }
-            }
-                    if showFilterSheet {
-                                    
+                    
+                } //fin VStack
+                if showFilterSheet {
+                    ZStack(alignment: .topTrailing) {
                         // Le fond noir translucide pour assombrir la liste
                         Color.black.opacity(0.3)
                             .ignoresSafeArea()
                             .onTapGesture {
                                 // Ferme le menu si on clique en dehors de la carte
-                                        showFilterSheet = false
-                                    }
-
-                        FilterMenuView(selectedFilter: $filterStreetArt, isPresented: $showFilterSheet)
-                            .padding(24)
-                            .background(.white)
-                            .cornerRadius(30)
-                            .shadow(radius: 10)
-                            .padding(.horizontal, 40)
-                            .transition(.scale.combined(with: .opacity)) // Animation zoom + fondu
-                                }
+                                showFilterSheet = false
                             }
-                            // Applique l'animation fluide dès que la var showFilterSheet change
-                            .animation(.easeInOut, value: showFilterSheet)
-                        }
+                        
+                        FilterMenuView(selectedFilter: $filterStreetArt, isPresented: $showFilterSheet)
+                            
+                            .padding(.top, 2)
+                            .padding(.trailing, 16)
+                            .transition(.scale.combined(with: .opacity)) // Animation zoom + fondu
                     }
+                }
+            }// ZStack
+            .toolbar{
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showFilterSheet.toggle() // alterne entre true et false
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                    }
+                }
+            }
+            
+            // Applique l'animation fluide dès que la var showFilterSheet change
+            .animation(.easeInOut, value: showFilterSheet)
+        }
+    }
+}
 #Preview {
     ContentView()
 }
