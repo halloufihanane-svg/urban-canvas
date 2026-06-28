@@ -10,6 +10,8 @@ import SwiftUI
 struct StreetArtDetailView: View {
     
     let streetArt: StreetArtStructure
+    var onClose: (() -> Void)? = nil
+    var onExpand: (() -> Void)? = nil
     
     var body: some View {
         ZStack {
@@ -64,6 +66,34 @@ struct StreetArtDetailView: View {
                 }
                 .ignoresSafeArea(edges: .top)
                 
+            }
+        }
+        .overlay(alignment: .topLeading) {
+            if let onClose {
+                Button {
+                    onClose()
+                } label: {
+                    Image(systemName: "xmark")
+                        .foregroundStyle(.black)
+                        .padding(10)
+                        .background(Color.gray.opacity(0.4))
+                        .clipShape(Circle())
+                }
+                .padding()
+            }
+        }
+        .overlay(alignment: .topTrailing) {
+            if let onExpand {
+                Button {
+                    onExpand()
+                } label: {
+                    Image(systemName: "arrow.right")
+                        .foregroundStyle(.white)
+                        .padding(10)
+                        .background(Color.orange)
+                        .clipShape(Circle())
+                }
+                .padding()
             }
         }
     }

@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var displayMode = "Liste"
     @State private var cameraPosition: MapCameraPosition = .region(MKCoordinateRegion(center: (CLLocationCoordinate2D(latitude: 46.6, longitude: 2.5)), span: MKCoordinateSpan(latitudeDelta: 8, longitudeDelta: 8))) //center : coordonnées géographiques du centre de la France
     @State private var selectedStreetArt: StreetArtStructure?
+    @State private var currentDetent: PresentationDetent = .height(320)
     
     
     var filteredStreetArts: [StreetArtStructure] {
@@ -96,42 +97,47 @@ struct ContentView: View {
                             }
                         }
                         .sheet(item: $selectedStreetArt) { streetArt in
-                            StreetArtDetailView(streetArt: streetArt)
-                                .presentationDetents([.height(320), .large])
+                            StreetArtDetailView(streetArt: streetArt, onClose: {
+                                selectedStreetArt = nil
+                            }, onExpand: {
+                                currentDetent = .large
+                            })
+                            .presentationDetents([.height(320), .large])
+                            .presentationDragIndicator(.visible)
+                        }
+                               
+                    } //fin VStack
+                    if showFilterSheet {
+                        ZStack(alignment: .topTrailing) {
+                            // Le fond noir translucide pour assombrir la liste
+                            Color.black.opacity(0.3)
+                                .ignoresSafeArea()
+                                .onTapGesture {
+                                    // Ferme le menu si on clique en dehors de la carte
+                                    showFilterSheet = false
+                                }
+                            
+                            FilterMenuView(selectedFilter: $filterStreetArt, isPresented: $showFilterSheet)
+                            
+                                .padding(.top, 2)
+                                .padding(.trailing, 16)
+                                .transition(.scale.combined(with: .opacity)) // Animation zoom + fondu
                         }
                     }
-                    
-                } //fin VStack
-                if showFilterSheet {
-                    ZStack(alignment: .topTrailing) {
-                        // Le fond noir translucide pour assombrir la liste
-                        Color.black.opacity(0.3)
-                            .ignoresSafeArea()
-                            .onTapGesture {
-                                // Ferme le menu si on clique en dehors de la carte
-                                showFilterSheet = false
-                            }
-                        
-                        FilterMenuView(selectedFilter: $filterStreetArt, isPresented: $showFilterSheet)
-                            
-                            .padding(.top, 2)
-                            .padding(.trailing, 16)
-                            .transition(.scale.combined(with: .opacity)) // Animation zoom + fondu
+                }// ZStack
+                .toolbar{
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            showFilterSheet.toggle() // alterne entre true et false
+                        } label: {
+                            Image(systemName: "line.3.horizontal.decrease.circle")
+                        }
                     }
                 }
-            }// ZStack
-            .toolbar{
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showFilterSheet.toggle() // alterne entre true et false
-                    } label: {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                    }
-                }
+                
+                // Applique l'animation fluide dès que la var showFilterSheet change
+                .animation(.easeInOut, value: showFilterSheet)
             }
-            
-            // Applique l'animation fluide dès que la var showFilterSheet change
-            .animation(.easeInOut, value: showFilterSheet)
         }
     }
 }
